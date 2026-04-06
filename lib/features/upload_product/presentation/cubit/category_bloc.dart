@@ -1,36 +1,31 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-// ─── Categories ───────────────────────────────────────────────────────────────
-
 const List<String> kCategories = [
   'Electronics',
-  'Laptops',
-  'Mobiles',
-  'Cosmetics',
   'Shoes',
+  'Laptops',
+  'Phones',
+  'Cosmetics',
   'Watches',
   'Fashion',
   'Books',
+  'Accessories',
 ];
-
-// ─── Event ────────────────────────────────────────────────────────────────────
 
 class SelectCategoryEvent {
   final String category;
   const SelectCategoryEvent(this.category);
 }
 
-// ─── State ────────────────────────────────────────────────────────────────────
-
 class CategoryState {
   final String? selected;
   const CategoryState({this.selected});
 }
 
-// ─── Bloc ─────────────────────────────────────────────────────────────────────
-
 class CategoryBloc extends Bloc<SelectCategoryEvent, CategoryState> {
-  CategoryBloc() : super(const CategoryState()) {
+  CategoryBloc({String? initialCategory})
+    : super(CategoryState(selected: initialCategory)) {
+    // ← بياخد القيمة الأولى
     on<SelectCategoryEvent>((event, emit) {
       emit(CategoryState(selected: event.category));
     });

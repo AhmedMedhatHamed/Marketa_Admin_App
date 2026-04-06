@@ -18,3 +18,5 @@ final class UploadProductImagePicked extends UploadProductState {
   final File image;
    UploadProductImagePicked(this.image);
 }
+
+final class UploadProductInitialized extends UploadProductState {}

@@ -7,10 +7,12 @@ import 'package:marketa_admin/core/widgets/custom_buttons.dart';
 import 'package:marketa_admin/core/widgets/custom_text_field.dart';
 import 'package:marketa_admin/features/upload_product/presentation/cubit/category_bloc.dart';
 import 'package:marketa_admin/features/upload_product/presentation/cubit/upload_product/upload_product_cubit.dart';
+import 'package:marketa_admin/features/upload_product/presentation/widgets/upload_image_widget.dart';
 import 'category_dropdown_widget.dart';
 
 class UploadProductForm extends StatelessWidget {
-  const UploadProductForm({super.key});
+  final bool isEdit;
+  const UploadProductForm({super.key, this.isEdit = false});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +25,11 @@ class UploadProductForm extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
           children: [
+            UploadImageWidget(),
+            const SizedBox(height: 20.0),
             BlocProvider(
-              create: (_) => CategoryBloc(),
+              create: (_) =>
+                  CategoryBloc(initialCategory: cubit.selectedCategory),
               child: CategoryDropdown(onChanged: cubit.selectCategory),
             ),
             const SizedBox(height: 20.0),
@@ -76,32 +81,26 @@ class UploadProductForm extends StatelessWidget {
               prefixIcon: Icon(Icons.notes_rounded, color: colors.primary),
               controller: cubit.descriptionController,
             ),
-             SizedBox(height: MediaQuery.of(context).size.height*0.15,),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.15),
             BlocConsumer<UploadProductCubit, UploadProductState>(
               listener: (context, state) {
                 if (state is UploadProductSuccess) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Center(
-                        child: Text(
-                          'Product uploaded successfully!',
-                          style: CustomTextStyles.poppins400styles18Black.copyWith(
-                              color: colors.background
-                          ),
-                        ),
+                      content: Text(
+                        isEdit
+                            ? 'Product updated successfully!'
+                            : 'Product uploaded successfully!',
+                        style: CustomTextStyles.poppinsBoldStyles18Black,
                       ),
                     ),
                   );
                 } else if (state is UploadProductError) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Center(
-                        child: Text(
-                          state.message,
-                          style: CustomTextStyles.poppins400styles18Black.copyWith(
-                            color: colors.text
-                          ),
-                        ),
+                      content: Text(
+                        state.message,
+                        style: CustomTextStyles.poppinsBoldStyles18Black,
                       ),
                       backgroundColor: AppColor.errorMsgColor,
                     ),
@@ -115,26 +114,31 @@ class UploadProductForm extends StatelessWidget {
                       width: 120.0,
                       text: 'Clear',
                       fontSize: 16.0,
-                      icon: Icon(Icons.clear, size: 24.0, color: AppColor.offWhite),
+                      icon: Icon(
+                        Icons.clear,
+                        size: 24.0,
+                        color: AppColor.offWhite,
+                      ),
                       color: AppColor.errorMsgColor,
                       onPressed: state is UploadProductLoading
                           ? null
                           : cubit.clearForm,
                     ),
-                    SizedBox(width: 10.0),
-
+                    const SizedBox(width: 10.0),
                     Expanded(
                       child: CustomButtonWithIcon(
-                        text: 'upload product',
+                        text: isEdit ? 'Edit Product' : 'Upload Product',
                         fontSize: 18.0,
                         icon: Icon(
-                          Icons.upload,
+                          isEdit ? Icons.edit : Icons.upload,
                           size: 24.0,
                           color: AppColor.offWhite,
                         ),
                         color: colors.primary,
                         onPressed: state is UploadProductLoading
                             ? null
+                            : isEdit
+                            ? cubit.updateProduct
                             : cubit.uploadProduct,
                       ),
                     ),

@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:marketa_admin/core/utils/text_styles.dart';
-import 'package:marketa_admin/features/orders/presentation/cubit/viewed_cubit/viewed_cubit.dart';
 import 'package:marketa_admin/features/product/data/models/product_model.dart';
 
 
@@ -14,11 +12,9 @@ class SearchGridViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewedCubit = context.read<ViewedCubit>();
     return GestureDetector(
       onTap: () {
-        viewedCubit.addProductInHistory(productId: product.productId);
-        context.push('/productDetails', extra: product.productId);
+        context.push('/editProduct', extra: product);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),

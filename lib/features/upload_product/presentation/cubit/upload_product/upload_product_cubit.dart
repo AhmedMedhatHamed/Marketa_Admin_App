@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:marketa_admin/features/product/data/models/product_model.dart';
 
 part 'upload_product_state.dart';
 
@@ -68,7 +69,27 @@ class UploadProductCubit extends Cubit<UploadProductState> {
 
   void removeImage() {
     productImage = null;
+    imageUrl     = null; // ← يمسح الـ network image كمان
     emit(UploadProductInitial());
   }
 
+  ////////////////////////////////////////////
+  String? imageUrl;
+
+  void initWithProduct(ProductModel product) {
+    titleController.text       = product.productTitle;
+    priceController.text       = product.productPrice.toString();
+    qtyController.text         = product.productQuantity.toString();
+    descriptionController.text = product.productDescription;
+    selectedCategory           = product.productCategory;
+    imageUrl                   = product.productImage; // ← حفظ الـ URL
+    emit(UploadProductInitialized());
+  }
+
+  void updateProduct() {
+    if (!formKey.currentState!.validate()) return;
+    emit(UploadProductLoading());
+    // هنا بعت للـ API الـ update
+    emit(UploadProductSuccess());
+  }
 }
