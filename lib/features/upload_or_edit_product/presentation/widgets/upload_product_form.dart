@@ -5,9 +5,9 @@ import 'package:marketa_admin/core/utils/app_style.dart';
 import 'package:marketa_admin/core/utils/text_styles.dart';
 import 'package:marketa_admin/core/widgets/custom_buttons.dart';
 import 'package:marketa_admin/core/widgets/custom_text_field.dart';
-import 'package:marketa_admin/features/upload_product/presentation/cubit/category_bloc.dart';
-import 'package:marketa_admin/features/upload_product/presentation/cubit/upload_product/upload_product_cubit.dart';
-import 'package:marketa_admin/features/upload_product/presentation/widgets/upload_image_widget.dart';
+import 'package:marketa_admin/features/upload_or_edit_product/presentation/cubit/category_bloc.dart';
+import 'package:marketa_admin/features/upload_or_edit_product/presentation/cubit/upload_product/upload_product_cubit.dart';
+import 'package:marketa_admin/features/upload_or_edit_product/presentation/widgets/upload_image_widget.dart';
 import 'category_dropdown_widget.dart';
 
 class UploadProductForm extends StatelessWidget {

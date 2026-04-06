@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketa_admin/core/utils/app_style.dart';
-import 'package:marketa_admin/features/upload_product/presentation/cubit/category_bloc.dart';
+import 'package:marketa_admin/features/upload_or_edit_product/presentation/cubit/category_bloc.dart';
 
 class CategoryDropdown extends StatelessWidget {
   final void Function(String category)? onChanged;
@@ -43,7 +43,7 @@ class CategoryDropdown extends StatelessWidget {
           items: kCategories
               .map((c) => DropdownMenuItem(
             value: c,
-            child: Text(c, style: TextStyle(color: colors.text, fontSize: 14)),
+            child: Center(child: Text(c, style: TextStyle(color: colors.text, fontSize: 14.0))),
           ))
               .toList(),
           onChanged: (value) {

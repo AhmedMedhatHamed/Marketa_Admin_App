@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketa_admin/core/widgets/custom_appbar_text.dart';
-import 'package:marketa_admin/features/upload_product/presentation/cubit/upload_product/upload_product_cubit.dart';
-import 'package:marketa_admin/features/upload_product/presentation/widgets/upload_image_widget.dart';
-import 'package:marketa_admin/features/upload_product/presentation/widgets/upload_product_form.dart';
+import 'package:marketa_admin/features/upload_or_edit_product/presentation/cubit/upload_product/upload_product_cubit.dart';
+import 'package:marketa_admin/features/upload_or_edit_product/presentation/widgets/upload_product_form.dart';
 
 class UploadProductView extends StatelessWidget {
   const UploadProductView({super.key});
@@ -27,9 +26,8 @@ class UploadProductView extends StatelessWidget {
                 ),
               ),
               SliverToBoxAdapter(child: SizedBox(height: 20.0)),
-              SliverToBoxAdapter(child: UploadImageWidget()),
-              const SliverPadding(
-                padding: EdgeInsets.symmetric(vertical: 30.0),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(vertical: 30.0),
                 sliver: SliverToBoxAdapter(child: UploadProductForm()),
               ),
             ],

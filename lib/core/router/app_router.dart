@@ -1,11 +1,11 @@
 import 'package:go_router/go_router.dart';
 import 'package:marketa_admin/features/dashboard/presentation/view/dashboard_view.dart';
-import 'package:marketa_admin/features/edit_product/presentation/view/edit_product_view.dart';
 import 'package:marketa_admin/features/orders/presentation/views/all_order_view.dart';
 import 'package:marketa_admin/features/product/data/models/product_model.dart';
 import 'package:marketa_admin/features/product/presentation/view/product_details_view.dart';
 import 'package:marketa_admin/features/search/presentation/views/search_view.dart';
-import 'package:marketa_admin/features/upload_product/presentation/view/upload_product_view.dart';
+import 'package:marketa_admin/features/upload_or_edit_product/presentation/view/edit_product_view.dart';
+import 'package:marketa_admin/features/upload_or_edit_product/presentation/view/upload_product_view.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
