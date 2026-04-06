@@ -4,7 +4,7 @@ import 'package:marketa_admin/core/utils/app_assets.dart';
 
 class DashboardModel {
   final String image, text;
-  final void Function()? onTap;
+  final void Function() onTap;
 
   DashboardModel({
     required this.image,
@@ -16,7 +16,9 @@ class DashboardModel {
     DashboardModel(
       image: AppAssets.cloud,
       text: 'Add New Product',
-      onTap: () {},
+      onTap: () {
+        context.push('/uploadProduct');
+      },
     ),
     DashboardModel(
       image: AppAssets.shoppingCart,

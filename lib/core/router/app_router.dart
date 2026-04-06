@@ -3,6 +3,7 @@ import 'package:marketa_admin/features/dashboard/presentation/view/dashboard_vie
 import 'package:marketa_admin/features/orders/presentation/views/all_order_view.dart';
 import 'package:marketa_admin/features/product/presentation/view/product_details_view.dart';
 import 'package:marketa_admin/features/search/presentation/views/search_view.dart';
+import 'package:marketa_admin/features/upload_product/presentation/view/upload_product_view.dart';
 
 final GoRouter router = GoRouter(
   initialLocation: '/',
@@ -25,6 +26,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/allOrder',
       builder: (context, state) => const AllOrderView(),
+    ),
+    GoRoute(
+      path: '/uploadProduct',
+      builder: (context, state) => const UploadProductView(),
     ),
   ],
 );

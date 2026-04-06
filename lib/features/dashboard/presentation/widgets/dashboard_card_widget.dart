@@ -16,6 +16,7 @@ class DashboardCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).extension<AppColors>()!;
     return InkWell(
+      borderRadius: BorderRadius.circular(22.0),
       onTap: onTap,
       child: Card(
         child: Column(

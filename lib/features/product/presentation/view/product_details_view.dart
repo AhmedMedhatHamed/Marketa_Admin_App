@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketa_admin/core/widgets/custom_appbar_text.dart';
 import 'package:marketa_admin/features/product/presentation/cubit/product_cubit.dart';
-import 'package:marketa_admin/features/product/presentation/widgets/favorite_and_add_to_cart.dart';
 import 'package:marketa_admin/features/product/presentation/widgets/product_description.dart';
 import 'package:marketa_admin/features/product/presentation/widgets/product_image.dart';
 import 'package:marketa_admin/features/product/presentation/widgets/title_and_price.dart';
@@ -33,12 +32,6 @@ class ProductDetailsView extends StatelessWidget {
             child: TitleAndPrice(
               title: getCurrentProduct.productTitle,
               price: getCurrentProduct.productPrice,
-            ),
-          ),
-          SliverToBoxAdapter(child: SizedBox(height: 25.0)),
-          SliverToBoxAdapter(
-            child: FavoriteAndAddToCartWidget(
-              productId: getCurrentProduct.productId,
             ),
           ),
           SliverToBoxAdapter(child: SizedBox(height: 25.0)),
