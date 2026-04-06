@@ -51,7 +51,6 @@ class _SearchViewState extends State<SearchView> {
                   title: CustomAppBarText(
                     text: widget.categoryName ?? 'Search',
                   ),
-                  leading: AppBarLeading(),
                 ),
                 const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
                 SliverToBoxAdapter(

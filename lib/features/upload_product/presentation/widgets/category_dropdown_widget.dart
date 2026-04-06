@@ -4,7 +4,9 @@ import 'package:marketa_admin/core/utils/app_style.dart';
 import 'package:marketa_admin/features/upload_product/presentation/cubit/category_bloc.dart';
 
 class CategoryDropdown extends StatelessWidget {
-  const CategoryDropdown({super.key});
+  final void Function(String category)? onChanged;
+
+  const CategoryDropdown({super.key, this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +22,9 @@ class CategoryDropdown extends StatelessWidget {
           ),
           decoration: InputDecoration(
             labelText: 'Category',
-            labelStyle: TextStyle(
-              color: colors.primary,
-              fontWeight: FontWeight.w500,
-            ),
+            labelStyle: TextStyle(color: colors.primary, fontWeight: FontWeight.w500),
             prefixIcon: Icon(Icons.category_outlined, color: colors.primary),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 14,
-            ),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             filled: true,
             fillColor: colors.surface,
             border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
@@ -45,21 +41,15 @@ class CategoryDropdown extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
           icon: Icon(Icons.keyboard_arrow_down_rounded, color: colors.primary),
           items: kCategories
-              .map(
-                (c) => DropdownMenuItem(
-                  value: c,
-                  child: Center(
-                    child: Text(
-                      c,
-                      style: TextStyle(color: colors.text, fontSize: 14.0),
-                    ),
-                  ),
-                ),
-              )
+              .map((c) => DropdownMenuItem(
+            value: c,
+            child: Text(c, style: TextStyle(color: colors.text, fontSize: 14)),
+          ))
               .toList(),
           onChanged: (value) {
             if (value != null) {
-              context.read<CategoryBloc>().add(SelectCategoryEvent(value));
+              context.read<CategoryBloc>().add(SelectCategoryEvent(value)); // ← يحدّث الـ Bloc
+              onChanged?.call(value); // ← يبعت للـ Cubit
             }
           },
         );
