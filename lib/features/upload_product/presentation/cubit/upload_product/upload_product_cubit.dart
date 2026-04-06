@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 part 'upload_product_state.dart';
 
@@ -11,7 +14,7 @@ class UploadProductCubit extends Cubit<UploadProductState> {
   final qtyController = TextEditingController();
   final descriptionController = TextEditingController();
   final formKey = GlobalKey<FormState>();
-
+  File? productImage;
   String? selectedCategory;
 
   void selectCategory(String category) {
@@ -39,6 +42,7 @@ class UploadProductCubit extends Cubit<UploadProductState> {
     qtyController.clear();
     descriptionController.clear();
     selectedCategory = null;
+    productImage = null;
     emit(UploadProductInitial());
   }
 
@@ -51,5 +55,20 @@ class UploadProductCubit extends Cubit<UploadProductState> {
     return super.close();
   }
 
+
+
+
+  Future<void> pickImage() async {
+    final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (picked != null) {
+      productImage = File(picked.path);
+      emit(UploadProductImagePicked(productImage!));
+    }
+  }
+
+  void removeImage() {
+    productImage = null;
+    emit(UploadProductInitial());
+  }
 
 }

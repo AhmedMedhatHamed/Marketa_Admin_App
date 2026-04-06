@@ -13,3 +13,8 @@ final class UploadProductError extends UploadProductState {
   final String message;
    UploadProductError(this.message);
 }
+
+final class UploadProductImagePicked extends UploadProductState {
+  final File image;
+   UploadProductImagePicked(this.image);
+}

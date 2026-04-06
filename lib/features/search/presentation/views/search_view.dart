@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:marketa_admin/core/widgets/app_bar_leading.dart';
 import 'package:marketa_admin/core/widgets/custom_appbar_text.dart';
 import 'package:marketa_admin/features/product/presentation/cubit/product_cubit.dart';
 import 'package:marketa_admin/features/search/presentation/widgets/search_grid_view_widget.dart';

@@ -76,7 +76,7 @@ class UploadProductForm extends StatelessWidget {
               prefixIcon: Icon(Icons.notes_rounded, color: colors.primary),
               controller: cubit.descriptionController,
             ),
-            const SizedBox(height: 28.0),
+             SizedBox(height: MediaQuery.of(context).size.height*0.15,),
             BlocConsumer<UploadProductCubit, UploadProductState>(
               listener: (context, state) {
                 if (state is UploadProductSuccess) {
