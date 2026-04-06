@@ -48,6 +48,8 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/dashboard/
+    - assets/images/categories/
 
 
   fonts:

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'app_color.dart';
 
-abstract class CustomTextStyles{
+abstract class CustomTextStyles {
   static final archivo400styles64 = TextStyle(
     fontSize: 64.0,
     fontWeight: FontWeight.w400,
@@ -17,19 +17,16 @@ abstract class CustomTextStyles{
   static final poppins400styles18Black = TextStyle(
     fontSize: 18.0,
     fontWeight: FontWeight.w400,
-    color: Colors.black,
     fontFamily: 'Poppins',
   );
   static final poppins500styles24Black = TextStyle(
     fontSize: 24.0,
     fontWeight: FontWeight.w500,
-    color: Colors.black,
     fontFamily: 'Poppins',
   );
   static final poppinsBoldStyles18Black = TextStyle(
     fontSize: 18.0,
     fontWeight: FontWeight.bold,
-    color: Colors.black,
     fontFamily: 'Poppins',
   );
   static final poppinsBoldStyles26 = TextStyle(
@@ -51,7 +48,7 @@ abstract class CustomTextStyles{
   );
   static final poppinsStyles14Blue = TextStyle(
     fontSize: 14.0,
-    color:  Color(0xff037EE6),
+    color: Color(0xff037EE6),
     fontFamily: 'Poppins',
   );
 }
