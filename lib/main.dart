@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marketa_admin/core/theme/theme_bloc.dart';
@@ -5,11 +6,16 @@ import 'app/marketa_admin.dart';
 import 'core/database/cache_helper.dart';
 import 'features/cart/presentation/cubit/cart_cubit.dart';
 import 'features/product/presentation/cubit/product_cubit.dart';
+import 'firebase_options.dart';
 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(
     MultiBlocProvider(

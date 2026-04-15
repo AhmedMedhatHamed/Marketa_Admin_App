@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "719175778068",
+    "project_id": "marketa-admin",
+    "storage_bucket": "marketa-admin.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719175778068:android:8d3cee47015d706e93cc01",
+        "android_client_info": {
+          "package_name": "com.example.marketa_admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3sb-Vmq-hTz_2DwwA6eYqDqPT-Lrv5oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
